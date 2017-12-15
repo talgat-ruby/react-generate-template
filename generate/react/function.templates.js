@@ -1,4 +1,3 @@
-/* eslint-disable */
 const {includes} = require('../arguments').libs.react;
 const {templateTag, templateExpression} = require('../../helpers/');
 

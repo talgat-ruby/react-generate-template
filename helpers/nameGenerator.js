@@ -1,4 +1,3 @@
-/* eslint-disable */
 const crypto = require('crypto');
 
 module.exports = fileName => {

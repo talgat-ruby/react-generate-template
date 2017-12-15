@@ -1,4 +1,3 @@
-/* eslint-disable */
 const {libs: {react: {includes}}, options} = require('../arguments');
 const {checkExistanceThenWriteFile, messages} = require('../../helpers/');
 

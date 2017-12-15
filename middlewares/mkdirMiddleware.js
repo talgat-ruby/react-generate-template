@@ -1,4 +1,3 @@
-/* eslint-disable */
 const {mkdirPromise, statPromise, checkExistance} = require('../helpers');
 
 const checkIfDirectory = async (path, names) => {

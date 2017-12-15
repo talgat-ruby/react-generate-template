@@ -1,4 +1,3 @@
-/* eslint-disable */
 const readdirPromise = require('./readdirPromise');
 
 const checkExistance = async (path, fileName) => {

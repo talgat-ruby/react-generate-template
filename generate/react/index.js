@@ -1,4 +1,3 @@
-/* eslint-disable */
 const {libs: {react: {types}}, options} = require('../arguments');
 const {messages, nameGenerator} = require('../../helpers/');
 const {mkdirMiddleware} = require('../../middlewares');

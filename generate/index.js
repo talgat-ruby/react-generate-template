@@ -1,4 +1,3 @@
-/* eslint-disable */
 const path = require('path');
 const yargs = require('yargs');
 const {messages} = require('../helpers/');

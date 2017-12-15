@@ -1,4 +1,3 @@
-/* eslint-disable */
 const chalk = require('chalk');
 
 module.exports = (strings, ...variables) => {

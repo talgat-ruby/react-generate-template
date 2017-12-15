@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 exports.pipe = (...funcs) => (...args) =>
 	funcs.reduce(
 		(arg, func, i) => (i === 0 ? arg : func(arg)),

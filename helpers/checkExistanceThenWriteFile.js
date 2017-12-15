@@ -1,4 +1,3 @@
-/* eslint-disable */
 const readline = require('readline-sync');
 const chalk = require('chalk');
 const writeFilePromise = require('./writeFilePromise');

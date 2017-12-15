@@ -1,4 +1,3 @@
-/* eslint-disable */
 const mkdirPromise = require('./mkdirPromise');
 const writeFilePromise = require('./writeFilePromise');
 const readdirPromise = require('./readdirPromise');
