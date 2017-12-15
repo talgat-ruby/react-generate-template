@@ -6,13 +6,16 @@
   "directories": {
     "doc": "docs"
   },
+  "dependencies": {
+    "chalk": "^2.3.0",
+    "readline-sync": "^1.4.7",
+    "yargs": "^10.0.3"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
-    "chalk": "^2.3.0",
-    "readline-sync": "^1.4.7",
-    "yargs": "^10.0.3"
+    "jest": "^21.2.1"
   },
   "bin": {
     "react-generate-template": "./index.js"
