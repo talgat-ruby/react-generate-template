@@ -21,7 +21,8 @@ const com = {
 	withTest: `${mainDir} ${fileName} --lib=react --type=function --include=test`,
 	withFlow: `${mainDir} ${fileName} --lib=react --type=function --include=test,flow`,
 	withRedux: `${mainDir} ${fileName} --lib=react --type=function --include=test,redux`,
-	withFlowAndRedux: `${mainDir} ${fileName} --lib=react --type=function --include=test,redux,flow`
+	withFlowAndRedux: `${mainDir} ${fileName} --lib=react --type=function --include=test,redux,flow`,
+	withFlowAndReduxNoFolder: `${mainDir} ${fileName} -d --lib=react --type=class --include=test,redux,flow`
 };
 
 beforeEach(async () => {
@@ -107,3 +108,20 @@ test(`test the command  $ ${showCom} ${com.withFlowAndRedux}`, async () => {
 
 	expect(data).toMatchSnapshot();
 });
+
+test(
+	`test the command  $ ${showCom} ${com.withFlowAndReduxNoFolder}`,
+	async () => {
+		await exec(`${realCom} ${com.withFlowAndReduxNoFolder}`);
+
+		const files = await readdirPromise(mainDir);
+		const data = JSON.stringify(
+			await Promise.all(
+				files.map(name => readFilePromise(path.resolve(mainDir, name), 'utf8'))
+			)
+		);
+
+		expect(data).toMatchSnapshot();
+	},
+	10000
+);
