@@ -1,6 +1,6 @@
 {
   "name": "react-generate-template",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description":
     "Generate simple templates for react project, like create-react-app does",
   "main": "index.js",
