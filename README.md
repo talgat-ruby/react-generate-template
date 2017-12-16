@@ -10,34 +10,52 @@ Uses the kebab-case for specifying folder and file names. For example:
 * `home-page.js` - inside will be capitalized CamelCase component name
   `HomePage`
 
-## Dependencies
+## Installation
 
-install dependencies by coping and pasting into terminal the next line
+### Globally
+
+install dependency as global module
 
 ```sh
-yarn add --dev yargs chalk readline-sync
+yarn add global react-generate-template
 ```
 
-## Preparation
+### Locally
 
-Add this line to `package.json`. Example uses npm script name as `generate`, you
-can call it whatever you want of course.
+or install locally
+
+```sh
+yarn add --dev react-generate-template
+```
+
+after installing add to `package.json` to `scripts`
 
 ```json
 {
   "scripts": {
-    ...,
-    "generate": "node react-template-generator/generate/"
+    "generate": "react-generate-template"
   }
 }
 ```
 
-## Run
+## Use
 
-Call it
+### Gloablly
 
+```sh
+react-generate-template REST_OF_COMMAND
 ```
-yarn generate
+
+### Locally
+
+if you set up you script as above</br>
+You can run
+
+```sh
+yarn generate REST_OF_COMMAND
 ```
 
-after that at conosle shows what you need/can add
+### REST
+
+after that conosle shows what you need/can add</br></br>
+I will add possible/list of commands later.
