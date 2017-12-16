@@ -1,5 +1,3 @@
-const chalk = require('chalk');
-
 module.exports = (strings, ...variables) => {
 	let template = '';
 
