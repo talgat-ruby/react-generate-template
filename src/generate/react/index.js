@@ -3,9 +3,9 @@ const {messages, nameGenerator} = require('../../helpers/');
 const {mkdirMiddleware} = require('../../middlewares');
 const {generateTemplates} = require('./templates');
 
-const classTemplates = require('./class.templates');
-const pureTemplates = require('./pure.templates');
-const functionTemplates = require('./function.templates');
+const classTemplates = require('./class/');
+const pureTemplates = require('./pure/');
+const functionTemplates = require('./function/');
 
 // specify type
 module.exports = (path, fileName, {type, include = '', ...opts}) => {

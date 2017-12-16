@@ -1,24 +1,28 @@
+const checkExistance = require('./checkExistance');
+const checkExistanceThenWriteFile = require('./checkExistanceThenWriteFile');
+const messages = require('./messages');
 const mkdirPromise = require('./mkdirPromise');
-const writeFilePromise = require('./writeFilePromise');
+const nameGenerator = require('./nameGenerator');
+const {pipe, reversePipe} = require('./pipe');
+const readFilePromise = require('./readFilePromise');
 const readdirPromise = require('./readdirPromise');
 const statPromise = require('./statPromise');
-const nameGenerator = require('./nameGenerator');
-const messages = require('./messages');
 const templateTag = require('./templateTag');
-const {pipe, reversePipe} = require('./pipe');
-const checkExistanceThenWriteFile = require('./checkExistanceThenWriteFile');
-const checkExistance = require('./checkExistance');
+const unlinkPromise = require('./unlinkPromise');
+const writeFilePromise = require('./writeFilePromise');
 
 module.exports = {
-	mkdirPromise,
-	writeFilePromise,
-	readdirPromise,
-	statPromise,
-	nameGenerator,
+	checkExistance,
+	checkExistanceThenWriteFile,
 	messages,
-	templateTag,
+	mkdirPromise,
+	nameGenerator,
 	pipe,
 	reversePipe,
-	checkExistanceThenWriteFile,
-	checkExistance
+	readFilePromise,
+	readdirPromise,
+	statPromise,
+	templateTag,
+	unlinkPromise,
+	writeFilePromise
 };
