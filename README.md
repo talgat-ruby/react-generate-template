@@ -32,9 +32,9 @@ after installing add to `package.json` to `scripts`
 
 ```json
 {
-	"scripts": {
-		"generate": "react-generate-template"
-	}
+  "scripts": {
+    "generate": "react-generate-template"
+  }
 }
 ```
 
