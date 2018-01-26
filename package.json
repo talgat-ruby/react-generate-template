@@ -1,0 +1,43 @@
+{
+  "name": "react-generate-template",
+  "version": "0.1.1",
+  "description": "Generate simple templates for react project, like create-react-app does",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "jest --colors",
+    "prettier": "prettier --write \"src/**\""
+  },
+  "dependencies": {
+    "chalk": "^2.3.0",
+    "readline-sync": "^1.4.7",
+    "rimraf": "^2.6.2",
+    "yargs": "^11.0.0"
+  },
+  "devDependencies": {
+    "jest": "^22.1.4",
+    "prettier": "^1.9.2"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "jsx",
+      "json"
+    ]
+  },
+  "bin": {
+    "react-generate-template": "./index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/talgat-ruby/react-generate-template"
+  },
+  "author": "Talgat Saribayev",
+  "license": "MIT",
+  "keywords": [
+    "react",
+    "template"
+  ]
+}
