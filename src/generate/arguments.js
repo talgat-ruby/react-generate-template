@@ -1,26 +1,24 @@
 module.exports = {
-	libs: {
-		react: {
-			name: 'react',
-			types: {
-				CLASS: 'class',
-				PURE: 'pure',
-				FUNCTION: 'function'
-			},
-			includes: {
-				css: 'css',
-				flow: 'flow',
-				test: 'test',
-				redux: 'redux'
-			}
+	react: {
+		name: 'react',
+		types: {
+			CLASS: 'class',
+			PURE: 'pure',
+			FUNCTION: 'function'
 		},
-		redux: {
-			name: 'redux',
-			types: {
-				REGULAR: 'regular',
-				THUNK: 'thunk'
-				// SAGA: 'saga'
-			}
+		includes: {
+			css: 'css',
+			flow: 'flow',
+			test: 'test',
+			redux: 'redux'
+		}
+	},
+	redux: {
+		name: 'redux',
+		types: {
+			REGULAR: 'regular',
+			THUNK: 'thunk'
+			// SAGA: 'saga'
 		}
 	},
 	options: {
