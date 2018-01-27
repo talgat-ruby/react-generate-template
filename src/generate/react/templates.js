@@ -1,4 +1,4 @@
-const {libs: {react: {includes}}, options} = require('../arguments');
+const {react: {includes}, options} = require('../arguments');
 const {checkExistanceThenWriteFile, messages} = require('../../helpers/');
 
 exports.generateTemplates = templates => async (path, names, list, opts) => {

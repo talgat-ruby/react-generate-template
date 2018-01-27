@@ -1,4 +1,4 @@
-const {includes} = require('../../arguments').libs.react;
+const {includes} = require('../../arguments').react;
 
 const index = require('./index.tml');
 const component = require('./component.tml');

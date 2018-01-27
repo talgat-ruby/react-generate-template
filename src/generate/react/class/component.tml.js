@@ -1,4 +1,4 @@
-const {includes} = require('../../arguments').libs.react;
+const {includes} = require('../../arguments').react;
 const {templateTag} = require('../../../helpers/');
 
 module.exports = (names, list) => templateTag`

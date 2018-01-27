@@ -1,6 +1,6 @@
 const readline = require('readline-sync');
 const chalk = require('chalk');
-const writeFilePromise = require('./writeFilePromise');
+const {writeFilePromise} = require('./index');
 const checkExistance = require('./checkExistance');
 
 const ANSWERS = {

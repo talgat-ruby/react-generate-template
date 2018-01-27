@@ -1,4 +1,4 @@
-const readdirPromise = require('./readdirPromise');
+const {readdirPromise} = require('./index');
 const checkExistance = require('./checkExistance');
 
 const testFileName = 'test-file.new';

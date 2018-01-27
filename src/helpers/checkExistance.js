@@ -1,4 +1,4 @@
-const readdirPromise = require('./readdirPromise');
+const {readdirPromise} = require('./index');
 
 const checkExistance = async (path, fileName) => {
 	const filesList = await readdirPromise(path);

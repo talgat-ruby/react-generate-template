@@ -1,4 +1,4 @@
-const {libs: {react: {types}}, options} = require('../arguments');
+const {react: {types}, options} = require('../arguments');
 const {messages, nameGenerator} = require('../../helpers/');
 const {mkdirMiddleware} = require('../../middlewares');
 const {generateTemplates} = require('./templates');
