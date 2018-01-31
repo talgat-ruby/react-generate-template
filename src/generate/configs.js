@@ -30,6 +30,7 @@ module.exports = [
 			},
 			{
 				name: 'no-dir',
+				alias: 'n',
 				description:
 					'Will not create directory, will create files inside <path>',
 				type: 'boolean',

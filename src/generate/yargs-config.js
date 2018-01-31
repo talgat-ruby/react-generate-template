@@ -15,8 +15,11 @@ function getCommand(name, options) {
 	return options.reduce((acc, {name}) => `${acc} <${name}>`, `${name}`);
 }
 
-function getParams({description, type, choices}) {
+function getParams({description, type, alias, choices}) {
 	const params = {description, type};
+	if (alias) {
+		Object.assign(params, {alias});
+	}
 	if (choices) {
 		Object.assign(params, {choices});
 	}
