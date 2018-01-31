@@ -1,31 +1,29 @@
-const separateOptions = options =>
-	options.reduce(
-		(acc, option) => {
-			if (option.require) {
-				acc.requiredOptions.push(option);
-			} else {
-				acc.optionalOptions.push(option);
-			}
-			return acc;
-		},
-		{requiredOptions: [], optionalOptions: []}
-	);
+function separateOptions(options) {
+	const requiredOptions = [];
+	const optionalOptions = [];
+	for (const option of options) {
+		if (option.require) {
+			requiredOptions.push(option);
+		} else {
+			optionalOptions.push(option);
+		}
+	}
+	return {requiredOptions, optionalOptions};
+}
 
-const getCommand = (name, options) =>
-	options.reduce((acc, {name}) => `${acc} <${name}>`, `${name}`);
+function getCommand(name, options) {
+	return options.reduce((acc, {name}) => `${acc} <${name}>`, `${name}`);
+}
 
-const getParams = ({description, type, choices}) => {
-	const params = {
-		description,
-		type
-	};
+function getParams({description, type, choices}) {
+	const params = {description, type};
 	if (choices) {
 		Object.assign(params, {choices});
 	}
 	return params;
-};
+}
 
-const configureYargs = (yargs, configs) => {
+function configureYargs(yargs, configs) {
 	let result = yargs.usage('$0 <command>', 'create template', yargs => {
 		yargs.positional('command', {
 			describe: 'command to create templates',
@@ -36,7 +34,6 @@ const configureYargs = (yargs, configs) => {
 
 	for (const {name, description, options} of configs) {
 		const {requiredOptions, optionalOptions} = separateOptions(options);
-
 		const cmd = getCommand(name, requiredOptions);
 
 		result = result.command(cmd, description, yargs => {
@@ -50,7 +47,8 @@ const configureYargs = (yargs, configs) => {
 			return result;
 		});
 	}
+
 	return result.help().argv;
-};
+}
 
 module.exports = {configureYargs};
