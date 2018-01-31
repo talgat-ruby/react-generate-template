@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "chalk": "^2.3.0",
+    "handlebars": "^4.0.11",
     "readline-sync": "^1.4.7",
     "rimraf": "^2.6.2",
     "yargs": "^11.0.0"

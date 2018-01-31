@@ -26,7 +26,6 @@ module.exports = [
 				name: 'include',
 				description: 'include features',
 				type: 'array',
-				require: true,
 				choices: ['css', 'flow', 'jest', 'redux']
 			},
 			{
