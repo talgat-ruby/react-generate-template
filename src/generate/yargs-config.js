@@ -28,7 +28,7 @@ const getParams = ({description, type, choices}) => {
 const configureYargs = (yargs, configs) => {
 	let result = yargs.usage('$0 <command>', 'create template', yargs => {
 		yargs.positional('command', {
-			describe: 'check the <Commands> field',
+			describe: 'command to create templates',
 			type: 'string',
 			choices: configs.map(({name}) => name)
 		});
