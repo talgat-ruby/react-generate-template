@@ -8,13 +8,13 @@ var currentNodeVersion = process.versions.node;
 var semver = currentNodeVersion.split('.');
 var major = semver[0];
 
-if (major < 4) {
+if (major < 8) {
 	console.error(
 		chalk.red(
 			'You are running Node ' +
 				currentNodeVersion +
 				'.\n' +
-				'React Generate Template requires Node 7 or higher. \n' +
+				'React Generate Template requires Node 8 or higher. \n' +
 				'Please update your version of Node.'
 		)
 	);

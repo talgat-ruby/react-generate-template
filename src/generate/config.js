@@ -35,20 +35,27 @@ function configureYargs(yargs, configs) {
 		});
 	});
 
-	for (const {name, description, options} of configs) {
+	for (const {name, entry, description, options} of configs) {
 		const {requiredOptions, optionalOptions} = separateOptions(options);
 		const cmd = getCommand(name, requiredOptions);
 
-		result = result.command(cmd, description, yargs => {
-			let result = yargs;
-			for (const option of requiredOptions) {
-				result = result.positional(option.name, getParams(option));
+		result = result.command(
+			cmd,
+			description,
+			yargs => {
+				let result = yargs;
+				for (const option of requiredOptions) {
+					result = result.positional(option.name, getParams(option));
+				}
+				for (const option of optionalOptions) {
+					result = result.option(option.name, getParams(option));
+				}
+				return result;
+			},
+			argv => {
+				require(entry)(argv);
 			}
-			for (const option of optionalOptions) {
-				result = result.option(option.name, getParams(option));
-			}
-			return result;
-		});
+		);
 	}
 
 	return result.help().argv;

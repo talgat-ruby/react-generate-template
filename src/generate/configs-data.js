@@ -1,10 +1,11 @@
 module.exports = [
 	{
 		name: 'react',
+		entry: './react/',
 		description: 'generate react template',
 		options: [
 			{
-				name: 'path',
+				name: 'dest',
 				description: 'directory where insert file(s)',
 				type: 'string',
 				require: true
@@ -40,10 +41,11 @@ module.exports = [
 	},
 	{
 		name: 'redux',
+		entry: './redux/',
 		description: 'generate redux template',
 		options: [
 			{
-				name: 'path',
+				name: 'dest',
 				description: 'directory where insert file(s)',
 				type: 'string',
 				require: true
