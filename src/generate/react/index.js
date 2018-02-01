@@ -36,4 +36,9 @@
 // 			break;
 // 	}
 // };
-module.exports = (...args) => console.log('\x1b[33m args -> \x1b[0m', args);
+
+function generate(argv) {
+	console.log('\x1b[33m argv -> \x1b[0m', argv);
+}
+
+module.exports = generate;

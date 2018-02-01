@@ -33,8 +33,22 @@ module.exports = [
 				name: 'no-dir',
 				alias: 'n',
 				description:
-					'Will not create directory, will create files inside <path>',
+					'will not create directory, will create files inside <path>',
 				type: 'boolean',
+				require: false
+			},
+			{
+				name: 'convention',
+				alias: 'c',
+				description: 'naming convention for file name',
+				type: 'string',
+				default: 'kebab-case',
+				choices: [
+					'kebab-case',
+					'UpperCamelCase',
+					'lowerCamelCase',
+					'snake_case'
+				],
 				require: false
 			}
 		]

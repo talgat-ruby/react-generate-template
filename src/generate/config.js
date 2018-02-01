@@ -15,13 +15,16 @@ function getCommand(name, options) {
 	return options.reduce((acc, {name}) => `${acc} <${name}>`, `${name}`);
 }
 
-function getParams({description, type, alias, choices}) {
-	const params = {description, type};
-	if (alias) {
-		Object.assign(params, {alias});
+function getParams(option) {
+	const params = {description: option.description, type: option.type};
+	if (option.alias) {
+		Object.assign(params, {alias: option.alias});
 	}
-	if (choices) {
-		Object.assign(params, {choices});
+	if (option.choices) {
+		Object.assign(params, {choices: option.choices});
+	}
+	if (option.default) {
+		Object.assign(params, {default: option.default});
 	}
 	return params;
 }
