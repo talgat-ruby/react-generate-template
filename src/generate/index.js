@@ -1,4 +1,4 @@
-const configs = require('./configs-data');
-const {configureYargs} = require('./config');
+const data = require('./configs-data');
+const config = require('./config');
 
-configureYargs(require('yargs'), configs);
+config(require('yargs'), data);

@@ -61,4 +61,4 @@ function configureYargs(yargs, configs) {
 	return result.help().argv;
 }
 
-module.exports = {configureYargs};
+module.exports = configureYargs;
