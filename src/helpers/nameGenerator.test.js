@@ -1,20 +1,31 @@
+const chalk = require('chalk');
 const nameGenerator = require('./nameGenerator');
+const {NAME_CONVENTIONS} = require('>/src/constants');
 
-const testFileName = 'foo-bar';
-const testComponentName = 'FooBar';
+const testName = 'file-name';
+const expectedNames = {
+	[NAME_CONVENTIONS.KEBAB_CASE]: 'file-name',
+	[NAME_CONVENTIONS.UPPER_CAMEL_CASE]: 'FileName',
+	[NAME_CONVENTIONS.LOWER_CAMEL_CASE]: 'fileName',
+	[NAME_CONVENTIONS.SNAKE_CASE]: 'file_name'
+};
 
-test('check names', () => {
-	const {fileName, componentName, styleName} = nameGenerator(testFileName);
+const testName2 = 'file';
+const expectedNames2 = {
+	[NAME_CONVENTIONS.KEBAB_CASE]: 'file',
+	[NAME_CONVENTIONS.UPPER_CAMEL_CASE]: 'File',
+	[NAME_CONVENTIONS.LOWER_CAMEL_CASE]: 'file',
+	[NAME_CONVENTIONS.SNAKE_CASE]: 'file'
+};
 
-	expect(fileName).toBe(testFileName);
+test(`check names for - ${chalk.yellow(testName)}`, () => {
+	const names = nameGenerator(testName);
 
-	expect(componentName).toBe(testComponentName);
+	expect(names).toEqual(expectedNames);
+});
 
-	const startIndex = styleName.indexOf(fileName);
-	expect(
-		styleName.slice(
-			startIndex - 2,
-			startIndex + testFileName.split('').length + 2
-		)
-	).toBe(`__${fileName}__`);
+test(`check names for - ${chalk.yellow(testName2)}`, () => {
+	const names = nameGenerator(testName2);
+
+	expect(names).toEqual(expectedNames2);
 });

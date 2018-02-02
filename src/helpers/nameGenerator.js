@@ -1,14 +1,24 @@
-const crypto = require('crypto');
+const {NAME_CONVENTIONS} = require('>/src/constants');
 
-module.exports = fileName => {
-	const hashStart = crypto.randomBytes(4).toString('hex');
-	const hashEnd = crypto.randomBytes(4).toString('hex');
+function upperCamelCase(words) {
+	return words.map(word => `${word[0].toUpperCase()}${word.slice(1)}`).join('');
+}
 
-	const componentName = fileName
-		.split('-')
-		.map(part => `${part.slice(0, 1).toUpperCase()}${part.slice(1)}`)
-		.join('');
-	const styleName = `_${hashStart}__${fileName}__${hashEnd}`;
+function lowerCamelCase(words) {
+	return `${words[0]}${upperCamelCase(words.slice(1))}`;
+}
 
-	return {fileName, componentName, styleName};
-};
+function snakeCase(words) {
+	return words.join('_');
+}
+
+function generateNames(name) {
+	const namesArr = name.split('-');
+	return {
+		[NAME_CONVENTIONS.KEBAB_CASE]: name,
+		[NAME_CONVENTIONS.UPPER_CAMEL_CASE]: upperCamelCase(namesArr),
+		[NAME_CONVENTIONS.LOWER_CAMEL_CASE]: lowerCamelCase(namesArr),
+		[NAME_CONVENTIONS.SNAKE_CASE]: snakeCase(namesArr)
+	};
+}
+module.exports = generateNames;
