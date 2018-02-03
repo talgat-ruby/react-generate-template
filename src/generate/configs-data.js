@@ -40,7 +40,7 @@ module.exports = [
 			{
 				name: 'convention',
 				alias: 'c',
-				description: 'naming convention for file name',
+				description: 'naming convention for folder & file name',
 				type: 'string',
 				default: 'kebab-case',
 				choices: [

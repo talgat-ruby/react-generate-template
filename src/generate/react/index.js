@@ -1,3 +1,8 @@
+const fs = require('fs');
+const path = require('path');
+const chalk = require('chalk');
+const {mkdirPromise, nameGenerator} = require('>/src/helpers');
+
 // const {react: {types}, options} = require('../arguments');
 // const {messages, nameGenerator} = require('../../helpers/');
 // const {mkdirMiddleware} = require('../../middlewares');
@@ -37,8 +42,38 @@
 // 	}
 // };
 
-function generate(argv) {
-	console.log('\x1b[33m argv -> \x1b[0m', argv);
+async function generateTemplateDest(dest, folderName) {
+	try {
+		const newDest = path.join(dest, folderName);
+		if (fs.existsSync(newDest)) {
+			throw new Error(
+				`There is the folder ${chalk.yellow(
+					folderName
+				)}, please remove it, otherwise directory can not generated`
+			);
+		} else {
+			await mkdirPromise(newDest);
+			return newDest;
+		}
+	} catch (e) {
+		return Promise.reject(e);
+	}
+}
+
+async function generate({dest, name, convention, ...args}) {
+	try {
+		if (!fs.existsSync(dest)) {
+			throw new Error('Destination does not exists');
+		}
+		const names = nameGenerator(name);
+		const fileName = names[convention];
+
+		const templateDest = args['no-dir']
+			? dest
+			: await generateTemplateDest(dest, fileName);
+	} catch (e) {
+		console.error(e.stack);
+	}
 }
 
 module.exports = generate;
