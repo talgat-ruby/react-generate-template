@@ -32,8 +32,8 @@ const userInteraction = fileName => {
 	}
 };
 
-const checkExistanceThenWriteFile = (path, fileName, template) => {
-	const filePath = path.join(path, fileName);
+const checkExistanceThenWriteFile = (dest, fileName, template) => {
+	const filePath = path.join(dest, fileName);
 	if (fs.existsSync(dest)) {
 		const answer = userInteraction(fileName);
 		if (answer) {
