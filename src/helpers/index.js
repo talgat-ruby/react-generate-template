@@ -1,7 +1,6 @@
 const util = require('util');
 const fs = require('fs');
 
-const checkExistance = require('./checkExistance');
 const checkExistanceThenWriteFile = require('./checkExistanceThenWriteFile');
 const messages = require('./messages');
 const nameGenerator = require('./nameGenerator');
@@ -9,7 +8,6 @@ const {pipe, reversePipe} = require('./pipe');
 const templateTag = require('./templateTag');
 
 module.exports = {
-	checkExistance,
 	checkExistanceThenWriteFile,
 	messages,
 	nameGenerator,

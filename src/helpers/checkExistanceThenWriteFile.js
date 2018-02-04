@@ -1,7 +1,8 @@
+const fs = require('fs');
+const path = require('path');
 const readline = require('readline-sync');
 const chalk = require('chalk');
 const {writeFilePromise} = require('./index');
-const checkExistance = require('./checkExistance');
 
 const ANSWERS = {
 	AFFIRMATIVE: {
@@ -31,15 +32,15 @@ const userInteraction = fileName => {
 	}
 };
 
-const checkExistanceThenWriteFile = async (path, fileName, template) => {
-	const isExist = await checkExistance(path, fileName);
-	if (isExist) {
+const checkExistanceThenWriteFile = (path, fileName, template) => {
+	const filePath = path.join(path, fileName);
+	if (fs.existsSync(dest)) {
 		const answer = userInteraction(fileName);
 		if (answer) {
-			return writeFilePromise(`${path}/${fileName}`, template);
+			return writeFilePromise(filePath, template);
 		}
 	} else {
-		return writeFilePromise(`${path}/${fileName}`, template);
+		return writeFilePromise(filePath, template);
 	}
 };
 
