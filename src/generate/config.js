@@ -1,4 +1,4 @@
-function separateOptions(options) {
+const separateOptions = options => {
 	const requiredOptions = [];
 	const optionalOptions = [];
 	for (const option of options) {
@@ -9,13 +9,12 @@ function separateOptions(options) {
 		}
 	}
 	return {requiredOptions, optionalOptions};
-}
+};
 
-function getCommand(name, options) {
-	return options.reduce((acc, {name}) => `${acc} <${name}>`, `${name}`);
-}
+const getCommand = (name, options) =>
+	options.reduce((acc, {name}) => `${acc} <${name}>`, `${name}`);
 
-function getParams(option) {
+const getParams = option => {
 	const params = {description: option.description, type: option.type};
 	if (option.alias) {
 		Object.assign(params, {alias: option.alias});
@@ -27,9 +26,9 @@ function getParams(option) {
 		Object.assign(params, {default: option.default});
 	}
 	return params;
-}
+};
 
-function configureYargs(yargs, configs) {
+const configureYargs = (yargs, configs) => {
 	let result = yargs.usage('$0 <command>', 'create template', yargs => {
 		yargs.positional('command', {
 			describe: 'command to create templates',
@@ -62,6 +61,6 @@ function configureYargs(yargs, configs) {
 	}
 
 	return result.help().argv;
-}
+};
 
 module.exports = configureYargs;
