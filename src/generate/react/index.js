@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const chalk = require('chalk');
 const {mkdirPromise, nameGenerator, userInteraction} = require('>/helpers');
+const {INCLUDES} = require('./constants');
 const makeTemplate = require('./templates');
 
 async function generateTemplateDest(dest, folderName) {
@@ -25,6 +26,12 @@ async function generateTemplateDest(dest, folderName) {
 	}
 }
 
+const getTemplatesData = (names, include) => ({
+	names,
+	include,
+	INCLUDES
+});
+
 async function generate({dest, name, type, include = [], ...args}) {
 	try {
 		if (!fs.existsSync(dest)) {
@@ -33,13 +40,13 @@ async function generate({dest, name, type, include = [], ...args}) {
 		const names = nameGenerator(name);
 		const fileName = names[args.convention];
 
-		const templData = {names, include};
+		const data = getTemplatesData(names, include);
 		if (args.noDest) {
 			const templateGen = makeTemplate(dest, fileName, [
 				'component',
 				...include
 			]);
-			await templateGen[type](templData);
+			await templateGen[type](data);
 		} else {
 			const templateDest = await generateTemplateDest(dest, fileName);
 			const templateGen = makeTemplate(templateDest, fileName, [
@@ -47,7 +54,7 @@ async function generate({dest, name, type, include = [], ...args}) {
 				'component',
 				...include
 			]);
-			await templateGen[type](templData);
+			await templateGen[type](data);
 		}
 	} catch (e) {
 		console.error(e.stack);
