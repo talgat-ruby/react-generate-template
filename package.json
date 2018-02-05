@@ -8,7 +8,7 @@
     "doc": "docs"
   },
   "scripts": {
-    "postinstall": "ln -fsn ../ 'node_modules/>'",
+    "postinstall": "ln -fsn ../src 'node_modules/>'",
     "test": "jest --colors",
     "prettier": "prettier --write \"src/**\""
   },

@@ -1,15 +1,11 @@
-const {includes} = require('../../arguments').react;
+const path = require('path');
+const {INCLUDES} = require('../constants');
 
-const index = require('./index.tml');
-const component = require('./component.tml');
-const css = require('./css.tml');
-const test = require('./test.tml');
-const flow = require('./flow.tml');
-
-module.exports = {
-	index,
-	component,
-	[includes.css]: css,
-	[includes.test]: test,
-	[includes.flow]: flow
+const PATHS = {
+	index: path.resolve(__dirname, 'index.handlebars'),
+	component: path.resolve(__dirname, 'component.handlebars'),
+	[INCLUDES.CSS]: path.resolve(__dirname, 'css.handlebars'),
+	[INCLUDES.FLOW]: path.resolve(__dirname, 'flow.handlebars'),
+	[INCLUDES.JEST]: path.resolve(__dirname, 'jest.handlebars')
 };
+module.exports = PATHS;

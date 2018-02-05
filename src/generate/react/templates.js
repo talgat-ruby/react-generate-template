@@ -1,58 +1,51 @@
-const {react: {includes}, options} = require('../arguments');
-const {checkExistanceThenWriteFile, messages} = require('../../helpers/');
+const Handlebars = require('handlebars');
+const classPaths = require('./class/');
+const {TYPES, POSTFIXES} = require('./constants');
+const {readFilePromise, checkExistanceThenWriteFile} = require('>/helpers');
 
-exports.generateTemplates = templates => async (path, names, list, opts) => {
-	console.info(messages.includeMessage(includes));
-
-	const promises = [];
-
-	if (!opts[options.NO_DIR.key]) {
-		promises.push(
-			checkExistanceThenWriteFile(
-				path,
-				'index.js',
-				templates.index(names, list)
-			)
-		);
-	}
-
-	promises.push(
-		checkExistanceThenWriteFile(
-			path,
-			`${names.fileName}.js`,
-			templates.component(names, list)
-		)
-	);
-
-	if (list.includes(includes.css)) {
-		promises.push(
-			checkExistanceThenWriteFile(
-				path,
-				`${names.fileName}.css`,
-				templates[includes.css](names, list)
-			)
-		);
-	}
-
-	if (list.includes(includes.test)) {
-		promises.push(
-			checkExistanceThenWriteFile(
-				path,
-				`${names.fileName}.test.js`,
-				templates[includes.test](names, list)
-			)
-		);
-	}
-
-	if (list.includes(includes.flow)) {
-		promises.push(
-			checkExistanceThenWriteFile(
-				path,
-				`${names.fileName}.flow.js`,
-				templates[includes.flow](names, list)
-			)
-		);
-	}
-
-	return await Promise.all(promises);
+const PATHS = {
+	[TYPES.CLASS]: getPaths(classPaths),
+	[TYPES.PURE]: null,
+	[TYPES.FUNCTIONAL]: null
 };
+
+async function compileTemplate(filePath) {
+	try {
+		const template = await readFilePromise(filePath, 'utf8');
+		return Handlebars.compile(template);
+	} catch (e) {
+		return Promise.reject(e);
+	}
+}
+
+function getPaths(paths) {
+	return function generateTemplate(dest, fileName, filesList) {
+		return async function test(templateOptions) {
+			try {
+				for (const f of filesList) {
+					const template = await compileTemplate(paths[f]);
+					const parsedTemplate = template(templateOptions);
+
+					const postfix = POSTFIXES[f];
+					const file = postfix ? `${fileName}.${postfix}` : 'index.js';
+
+					await checkExistanceThenWriteFile(dest, file, parsedTemplate);
+				}
+			} catch (e) {
+				return Promise.reject(e);
+			}
+		};
+	};
+}
+
+function makeTemplate(dest, fileName, filesList) {
+	const obj = {};
+	for (const [key, path] of Object.entries(PATHS)) {
+		if (path) {
+			obj[key] = path(dest, fileName, filesList);
+		}
+	}
+	return obj;
+}
+
+module.exports = makeTemplate;

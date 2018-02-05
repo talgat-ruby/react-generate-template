@@ -1,3 +1,6 @@
+const constants = require('>/constants');
+const reactConstants = require('>/generate/react/constants');
+
 module.exports = [
 	{
 		name: 'react',
@@ -21,13 +24,13 @@ module.exports = [
 				description: 'type of component',
 				type: 'string',
 				require: true,
-				choices: ['class', 'pure', 'functional']
+				choices: Object.values(reactConstants.TYPES)
 			},
 			{
 				name: 'include',
 				description: 'include features',
 				type: 'array',
-				choices: ['css', 'flow', 'jest', 'redux']
+				choices: Object.values(reactConstants.INCLUDES)
 			},
 			{
 				name: 'no-dir',
@@ -44,10 +47,10 @@ module.exports = [
 				type: 'string',
 				default: 'kebab-case',
 				choices: [
-					'kebab-case',
-					'UpperCamelCase',
-					'lowerCamelCase',
-					'snake_case'
+					constants.NAME_CONVENTIONS.KEBAB_CASE,
+					constants.NAME_CONVENTIONS.UPPER_CAMEL_CASE,
+					constants.NAME_CONVENTIONS.LOWER_CAMEL_CASE,
+					constants.NAME_CONVENTIONS.SNAKE_CASE
 				],
 				require: false
 			}

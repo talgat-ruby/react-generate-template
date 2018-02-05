@@ -1,11 +1,10 @@
-const util = require('util');
-const fs = require('fs');
-
 const checkExistanceThenWriteFile = require('./checkExistanceThenWriteFile');
 const messages = require('./messages');
 const nameGenerator = require('./nameGenerator');
 const {pipe, reversePipe} = require('./pipe');
 const templateTag = require('./templateTag');
+const userInteraction = require('./userInteraction');
+const promisified = require('./promisified-modules');
 
 module.exports = {
 	checkExistanceThenWriteFile,
@@ -14,10 +13,6 @@ module.exports = {
 	pipe,
 	reversePipe,
 	templateTag,
-	mkdirPromise: util.promisify(fs.mkdir),
-	readFilePromise: util.promisify(fs.readFile),
-	readdirPromise: util.promisify(fs.readdir),
-	statPromise: util.promisify(fs.stat),
-	unlinkPromise: util.promisify(fs.unlink),
-	writeFilePromise: util.promisify(fs.writeFile)
+	userInteraction,
+	...promisified
 };

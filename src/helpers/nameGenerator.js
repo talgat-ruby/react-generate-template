@@ -1,4 +1,4 @@
-const {NAME_CONVENTIONS} = require('>/src/constants');
+const {NAME_CONVENTIONS} = require('>/constants');
 
 function upperCamelCase(words) {
 	return words.map(word => `${word[0].toUpperCase()}${word.slice(1)}`).join('');

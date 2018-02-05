@@ -1,6 +1,6 @@
 const chalk = require('chalk');
 const nameGenerator = require('./nameGenerator');
-const {NAME_CONVENTIONS} = require('>/src/constants');
+const {NAME_CONVENTIONS} = require('>/constants');
 
 const testName = 'file-name';
 const expectedNames = {
