@@ -27,7 +27,6 @@ async function generateTemplateDest(dest, folderName) {
 
 async function generate({dest, name, type, include = [], ...args}) {
 	try {
-		console.log('\x1b[33m include -> \x1b[0m', include);
 		if (!fs.existsSync(dest)) {
 			throw new Error('Destination does not exists');
 		}
