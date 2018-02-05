@@ -12,7 +12,7 @@ const ANSWERS = {
 	}
 };
 
-function userInteraction(question) {
+const userInteraction = question => {
 	const parsedQuestion = `${question} (Y)es or (N)o: `;
 	const answer = readline.question(parsedQuestion);
 
@@ -31,6 +31,6 @@ function userInteraction(question) {
 			);
 			return userInteraction(question);
 	}
-}
+};
 
 module.exports = userInteraction;
